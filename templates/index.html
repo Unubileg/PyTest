@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Student Administration</title>
+	</head>
+	<body>
+		<!-- <a href="{{ url_for('menu') }}">Menu</a> -->
+
+		<h1>Student Administration</h1>
+		<h2>Add Student</h2>
+		<form action="/add" method="post">
+			<label>Last Name: <input type="text" name="last_name" /></label><br />
+			<label>First Name: <input type="text" name="first_name" /></label><br />
+			<label>ID Number: <input type="text" name="id_number" /></label><br />
+			<label>Major: <input type="text" name="major" /></label><br />
+			<label>Email: <input type="email" name="email" /></label><br />
+			<button type="submit">Add Student</button>
+		</form>
+		<h2>Remove Student</h2>
+		<form action="/remove" method="post">
+			<label>Last Name: <input type="text" name="last_name" /></label><br />
+			<button type="submit">Remove Student</button>
+		</form>
+		<h2>Modify Student</h2>
+		<form action="/modify" method="post">
+			<label>Last Name: <input type="text" name="last_name" /></label><br />
+			<label>First Name: <input type="text" name="first_name" /></label><br />
+			<label>ID Number: <input type="text" name="id_number" /></label><br />
+			<label>Major: <input type="text" name="major" /></label><br />
+			<label>Email: <input type="email" name="email" /></label><br />
+			<button type="submit">Modify Student</button>
+		</form>
+		<h2>Search Student</h2>
+		<form action="/search" method="post">
+			<label>Last Name: <input type="text" name="last_name" /></label><br />
+			<button type="submit">Search Student</button>
+		</form>
+		<h2>List of Students</h2>
+		<ul>
+			{% for student in students %}
+			<li>
+				{{ student.last_name }}, {{ student.first_name }} - {{ student.id_number
+				}} - {{ student.major }} - {{ student.email }}
+			</li>
+			{% endfor %}
+		</ul>
+	</body>
+</html>
