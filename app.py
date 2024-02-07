@@ -90,17 +90,29 @@ def search():
         return render_template("student_details.html", student=student)
     return "Student not found."
 
-@app.route("/menu")
-def menu():
-    return render_template("menu.html")
+@app.route("/upload_json", methods=["POST"])
+def upload_json():
+    if "file" not in request.files:
+        return "No file part"
 
-@app.route("/add_student_page")
-def add_student_page():
-    return render_template("add_student.html")
+    file = request.files["file"]
+    if file.filename == "":
+        return "No selected file"
 
-@app.route("/search_student_page")
-def search_student_page():
-    return render_template("search_student.html")
+    if file and file.filename.endswith(".json"):
+        try:
+            uploaded_data = json.load(file)
+            if isinstance(uploaded_data, list):
+                students = load_students()
+                students.extend(uploaded_data)
+                save_students(students)
+                return redirect(url_for("index"))
+            else:
+                return "Invalid JSON format"
+        except json.JSONDecodeError:
+            return "Invalid JSON format"
+    else:
+        return "Please upload a JSON file"
 
 if __name__ == "__main__":
     app.run(debug=True)

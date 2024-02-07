@@ -1,0 +1,23 @@
+[
+	{
+		"last_name": "Gan",
+		"first_name": "dada",
+		"id_number": "",
+		"major": "",
+		"email": ""
+	},
+	{
+		"last_name": "Altaak",
+		"first_name": "Erdene",
+		"id_number": "1993",
+		"major": "Computer Science",
+		"email": "Altaak@gmail.com"
+	},
+	{
+		"last_name": "Torbat",
+		"first_name": "bat",
+		"id_number": "1923",
+		"major": "a",
+		"email": "a@oo.com"
+	}
+]
